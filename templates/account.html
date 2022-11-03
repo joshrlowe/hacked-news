@@ -26,7 +26,11 @@
 </div>
 
 <div id="main_content">
-	Account
+	<img style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #585858; margin-top: 20px;" src={{session["userinfo"]["picture"]}} />
+	<p>Name: {{ session["userinfo"]["name"] }}</p>
+	<br />
+	<p>Email: {{ session["userinfo"]["email"] }}</p>
+	<br />
 </div>
 
 </body>
@@ -85,14 +89,17 @@ body {
 	background-color: #FFF;
 	margin-top: 100px;
 	padding: 10px;
-	min-height: 800px;
+	min-height: 80%;
+	text-align: center;
+}
+
+#main_content p {
+	padding: 0px;
+	margin: 0px;
 }
 
 #main_content img {
-	width: 14px;
-	height: 14px;
-	padding: 6px;
-	border-radius: 30%;
+	margin: 10px;
 }
 
 #like_button img:hover {
