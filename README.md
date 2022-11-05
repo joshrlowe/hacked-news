@@ -3,6 +3,16 @@
 ### Group Number: 23
 ### Josh Lowe (jrl19@fsu.edu) and Trevor Fagan (taf20@fsu.edu)
 
+### Configuration Files (11/03/2022)
+All configuration files are found in config.
+hackedNews is our nginx server block including our ssl certificate.
+hackedNews.service is our gunicorn worker process.
+nginx.conf is our nginx configuration file.
+sshd_conf is our ssh configuration.
+
+### Updates & Upgrades
+We configured unattended updates and upgrades to automatically happen and the configuration file for updates and upgrades is ../../etc/apt/apt.conf.d/50unattended-upgrades from the python user login point or from /etc/apt/apt.conf.d/50unattended-upgrades in the project home directory.
+
 ## How to "curl hacked-news.com"
 ![Curl img](https://i.ibb.co/xzmDPVt/Screen-Shot-2022-10-16-at-3-14-42-PM.png)
 Initially, curl will require an IP address. In this instance, we provided our domain name, "hacked-news.com". From here, the
@@ -21,3 +31,4 @@ Flask will then provide the response to the curl request. It will find the entry
 ![Site image](https://i.ibb.co/HX7hMQ5/Screen-Shot-2022-10-19-at-10-35-52-AM.png)
 ### Security
 The initial layer of security we have used to secure our application is by protecting our user accounts that can access the server. Both of our users have access to the server strictly through our SSH key authentication. Additionally, we have a firewall enabled to striclty allow the use of port 22 for SSH connections and port 443 for HTTPS connections. Also, we have configured our Nginx file to redirect and only allow HTTPS connections. 
+
