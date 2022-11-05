@@ -33,15 +33,16 @@
 			<th>Link</th>
 			<th>Rating</th>
 		</tr>
-	{% for article in data %}
-		<tr>
-			<td>{{ article["by"] }}</td>
-			<td>{{ article["title"] }}</td>
-			<td><a style="text-decoration: none" href={{ article["url"] }} target="blank">View Article</a></td>
-			<td><span id="like_button"><img src="https://cdn-icons-png.flaticon.com/512/126/126473.png" /></span>
-			    <span id="dislike_button"><img src="https://cdn-icons-png.flaticon.com/512/880/880561.png"/></span></td>
-		</tr>
-	{% endfor %}
+
+		{% for article in data %}
+			<tr>
+				<td>{{ article[1] }}</td>
+				<td>{{ article[2] }}</td>
+				<td><a style="text-decoration: none" href={{ article[3] }} target="blank">View Article</a></td>
+				<td><span id="like_button"><img src="https://cdn-icons-png.flaticon.com/512/126/126473.png" /></span>
+			    	<span id="dislike_button"><img src="https://cdn-icons-png.flaticon.com/512/880/880561.png"/></span></td>
+			</tr>
+		{% endfor %}
 	</table>
 </div>
 

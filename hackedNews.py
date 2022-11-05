@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import requests
 
+import sqlite3
 import json
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
@@ -29,22 +30,17 @@ oauth.register(
 )
 
 @app.route('/')
-def home():
-	url = "https://hacker-news.firebaseio.com/v0/topstories.json"
-	payload = "{}"
-	response = requests.request("GET", url, data=payload)
+def home():	
+	conn = sqlite3.connect('users.db')
+	c = conn.cursor()
 
-	temp = response.json()
+	c.execute('SELECT * FROM Articles')
+	db_results = c.fetchall()
 
-	responses = []
+	conn.commit()
+	conn.close()
 
-	for article in temp[:30]:
-		url = "https://hacker-news.firebaseio.com/v0/item/{}.json".format(article)
-		payload = "{}"
-		response = requests.request("GET", url, data=payload)
-		responses.append(response.json())
-
-	return render_template('index.html', data=responses, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+	return render_template('index.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/login")
 def login():
@@ -58,7 +54,7 @@ def account():
 
 @app.route('/likes')
 def likes():
-        return render_template('likes.html', session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+        return render_template('likes.html', session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), db_data = db_results)
 
 @app.route("/callback", methods=["GET", "POST"])
 def callback():
