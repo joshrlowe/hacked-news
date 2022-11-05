@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve hackedNews
+After=network.target
+
+[Service]
+User=fagan
+Group=www-data
+WorkingDirectory=/home/fagan/hackedNews
+Environment="PATH=/home/fagan/hackedNews/hackedNews/bin"
+ExecStart=/home/fagan/hackedNews/hackedNews/bin/gunicorn --workers 5 --bind unix:hackedNews.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
