@@ -10,6 +10,9 @@ hackedNews.service is our gunicorn worker process.
 nginx.conf is our nginx configuration file.
 sshd_conf is our ssh configuration.
 
+### Updates & Upgrades
+We configured unattended updates and upgrades to automatically happen and the configuration file for updates and upgrades is ../../etc/apt/apt.conf.d/50unattended-upgrades from the python user login point or from /etc/apt/apt.conf.d/50unattended-upgrades in the project home directory.
+
 ## How to "curl hacked-news.com"
 ![Curl img](https://i.ibb.co/xzmDPVt/Screen-Shot-2022-10-16-at-3-14-42-PM.png)
 Initially, curl will require an IP address. In this instance, we provided our domain name, "hacked-news.com". From here, the
