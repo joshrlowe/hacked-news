@@ -53,11 +53,23 @@ def login():
 
 @app.route('/account')
 def account():
-        return render_template('account.html', session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+        res = Response(render_template('account.html', session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4)))
+        res.headers['X-Frame-Options'] = 'DENY'
+        res.headers['X-Content-Type-Options'] = 'nosniff'
+        res.headers['X-XSS-Protection'] = 1
+        res.headers['Strict-Transport-Security'] = 'max-age=63072000'
+        res.headers['Content-Security-Policy'] = "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'"
+        return res
 
 @app.route('/likes')
 def likes():
-        return render_template('likes.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+        res = Response(render_template('likes.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4)))
+        res.headers['X-Frame-Options'] = 'DENY'
+        res.headers['X-Content-Type-Options'] = 'nosniff'
+        res.headers['X-XSS-Protection'] = 1
+        res.headers['Strict-Transport-Security'] = 'max-age=63072000'
+        res.headers['Content-Security-Policy'] = "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'"
+        return res
 
 @app.route("/callback", methods=["GET", "POST"])
 def callback():
