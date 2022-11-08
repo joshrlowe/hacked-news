@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Response
 import requests
 
 import sqlite3
@@ -29,18 +29,17 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
+conn = sqlite3.connect('users.db')
+c = conn.cursor()
+
+c.execute('SELECT * FROM Articles')
+db_results = c.fetchall()
+
 @app.route('/')
-def home():	
-	conn = sqlite3.connect('users.db')
-	c = conn.cursor()
-
-	c.execute('SELECT * FROM Articles')
-	db_results = c.fetchall()
-
-	conn.commit()
-	conn.close()
-
-	return render_template('index.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+def home():
+	res = Response(render_template('index.html'))
+	res.headers['X-Frame-Options'] = 'DENY'
+	return res 
 
 @app.route("/login")
 def login():
@@ -54,7 +53,7 @@ def account():
 
 @app.route('/likes')
 def likes():
-        return render_template('likes.html', session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), db_data = db_results)
+        return render_template('likes.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/callback", methods=["GET", "POST"])
 def callback():
@@ -76,6 +75,9 @@ def logout():
             quote_via=quote_plus,
         )
     )
+
+conn.commit()
+conn.close()
 
 if __name__ == '__main__':
    app.run()

@@ -26,8 +26,24 @@
 </div>
 
 <div id="main_content">
-	Likes
-	{{ db_data }}
+	<table>
+                <tr>
+                        <th>Author</th>
+                        <th>Article Title</th>
+                        <th>Link</th>
+                        <th>Rating</th>
+                </tr>
+
+                {% for article in data %}
+                        <tr>
+                                <td>{{ article[1] }}</td>
+                                <td>{{ article[2] }}</td>
+                                <td><a style="text-decoration: none" href={{ article[3] }} target="blank">View Article</a></td>
+                                <td><a href="/add_data"><span id="like_button"><img src="https://cdn-icons-png.flaticon.com/512/126/126473.png" /></span></a>
+                                <span id="dislike_button"><img src="https://cdn-icons-png.flaticon.com/512/880/880561.png"/></span></td>
+                        </tr>
+                {% endfor %}
+        </table>
 </div>
 
 </body>
