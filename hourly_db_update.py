@@ -20,7 +20,7 @@ for article in temp[:10]:
 	responses.append(response.json())
 
 # Remove all of the articles that are older than an hour 
-c.execute("DELETE FROM Articles WHERE timestamp < DATETIME('now', '-1 HOUR') AND liked='NULL'")
+c.execute("DELETE FROM Articles WHERE date(timestamp) < date('now', '-1 day') AND liked='NULL'")
 
 # Adding all of the articles to our database
 for article in responses:
