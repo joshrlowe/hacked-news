@@ -3,27 +3,28 @@
 
 <head>
 	<title>Hacked News</title>
-	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3059/3059997.png" />
+	<link rel="icon" href={{ url_for('static', filename='favicon.png') }} />
 	<link rel="stylesheet" href={{ url_for('static', filename='styles.css') }} />
 </head>
 
 <body>
 
-<div id="top_menu">
-	<h1>Hacked News</h1>
-</div>
 
 <div id="menu">
+	<div id="menu_container">
+	<h1>Hacked News</h1>
+
         <ul>
                 <li><a href="/">News Feed</a></li>
                 <li><a href="/likes">Likes / Dislikes</a></li>
 		{% if session %}
-	                <li><a href="/account">My Account</a></li>
+		        <li><a href="/account">My Account</a></li>
 			<li><a href="/logout">Log Out</a></li>
 		{% else %}
 			<li><a href="/login">Sign In</a></li>
 		{% endif %}
         </ul>
+	</div>
 </div>
 
 <div id="main_content">
@@ -34,6 +35,8 @@
 	<br />
 </div>
 
-</body>
+<div id="footer">
+	<p>&copy Trevor Fagan, Josh Lowe 2022</p>
+</div>
 
-<style>
+</body>
