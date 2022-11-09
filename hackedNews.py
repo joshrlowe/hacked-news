@@ -34,6 +34,8 @@ c = conn.cursor()
 
 c.execute('SELECT * FROM Articles')
 db_results = c.fetchall()
+c.execute('SELECT * FROM Likes')
+likes_results = c.fetchall()
 
 @app.route('/')
 def home():
@@ -63,7 +65,7 @@ def account():
 
 @app.route('/likes')
 def likes():
-        res = Response(render_template('likes.html', data=db_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4)))
+        res = Response(render_template('likes.html', data=likes_results, session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4)))
         res.headers['X-Frame-Options'] = 'DENY'
         res.headers['X-Content-Type-Options'] = 'nosniff'
         res.headers['X-XSS-Protection'] = 1

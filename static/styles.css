@@ -120,6 +120,14 @@ body {
 	border-radius: 30%;
 }
 
+#account_image img {
+	width: 100px; 
+	height: 100px; 
+	border-radius: 50%; 
+	border: 2px solid #585858; 
+	margin-top: 20px;
+}
+
 #like_button {
 	margin-top: 5px;
 }
@@ -149,6 +157,14 @@ body {
 	padding-bottom: 10px;
 }
 
+#account_content tr {
+	padding: 5px;
+}
+
+#account_content td {
+	padding-bottom: 10px;
+}
+
 #footer {
 	width: 100%;
 	text-align: center;
@@ -161,4 +177,8 @@ body {
 #current_page {
         padding-bottom: 17px;
 	border-bottom: 2px solid red;
+}
+
+#account_content {
+	text-align: center;
 }

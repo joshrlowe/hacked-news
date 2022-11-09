@@ -28,24 +28,31 @@
 </div>
 
 <div id="main_content">
+<div id="account_content">
 	<table>
 		<tr>
+			<th>User Id</th>
+			<th>Article Id</th>
 			<th>Author</th>
 			<th>Article Title</th>
 			<th>Link</th>
 			<th>Rating</th>
+			<th>Remove</th>
 		</tr>
 
 		{% for article in data %}
 			<tr>
+				<td>{{ article[0] }}</td>
 				<td>{{ article[1] }}</td>
 				<td>{{ article[2] }}</td>
-				<td><a href={{ article[3] }} target="blank">View Article</a></td>
-				<td><span id="like_button"><img src={{ url_for('static', filename='thumbs_up.png') }} /></span>
-			    	<a><span id="dislike_button"><img src={{ url_for('static', filename='thumbs_down.png') }} /></span></a></td>
+				<td>{{ article[3] }}</td>
+				<td><a href={{ article[4] }} target="blank">View Article</a></td>
+				<td>{{ article[5] }}</td>
+				<td>Remove</td>
 			</tr>
 		{% endfor %}
 	</table>
+</div>
 </div>
 
 <div id="footer">
