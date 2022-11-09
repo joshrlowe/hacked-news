@@ -60,7 +60,7 @@ def account():
         res.headers['X-Content-Type-Options'] = 'nosniff'
         res.headers['X-XSS-Protection'] = 1
         res.headers['Strict-Transport-Security'] = 'max-age=63072000'
-        res.headers['Content-Security-Policy'] = "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'"
+        res.headers['Content-Security-Policy'] = "default-src 'none'; img-src * 'self' data: https:; script-src 'self'; style-src 'self'"
         return res
 
 @app.route('/likes')

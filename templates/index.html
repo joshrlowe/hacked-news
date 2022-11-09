@@ -16,7 +16,13 @@
 
         <ul>
                 <li><a href="/"><span id="current_page">News Feed</span></a></li>
-                <li><a href="/likes">Likes / Dislikes</a></li>
+		
+		{% if session %}
+			{% if session["userinfo"]["email"] == "trevorfagan77@gmail.com" or session["userinfo"]["email"] == "joshlowe.cs@gmail.com" %}
+				<li><a href="/likes">Likes / Dislikes</a></li>
+			{% endif %}
+		{% endif %}
+
 		{% if session %}
 		        <li><a href="/account">My Account</a></li>
 			<li><a href="/logout">Log Out</a></li>
