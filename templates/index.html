@@ -9,11 +9,9 @@
 
 <body>
 
-
 <div id="menu">
 	<div id="menu_container">
 	<h1><a href="/">Hacked News</a></h1>
-
         <ul>
                 <li><a href="/"><span id="current_page">News Feed</span></a></li>
 		
@@ -47,9 +45,14 @@
 				<td>{{ article[1] }}</td>
 				<td>{{ article[2] }}</td>
 				<td><a href={{ article[3] }} target="blank">View Article</a></td>
-				<td><span id="like_button"><img src={{ url_for('static', filename='thumbs_up.png') }} /></span>
-			    	<a><span id="dislike_button"><img src={{ url_for('static', filename='thumbs_down.png') }} /></span></a></td>
-			</tr>
+				<td>
+					<form method="POST" action="/add_like">
+						<input name={{article[0]}} width="10px" height="10px" type="image" src={{ url_for('static', filename='thumbs_up.png') }} alt="Submit"/>
+					</form>
+					<form method="POST" action="/add_dislike">
+						<input name={{article[0]}} width="10px" height="10px" type="image" src={{ url_for('static', filename='thumbs_down.png') }} alt="Submit"/>
+					</form>
+				</tr>
 		{% endfor %}
 	</table>
 </div>
