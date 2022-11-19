@@ -12,12 +12,12 @@
 
 <div id="menu">
 	<div id="menu_container">
-	<h1><a href="/">Hacked News</a></h1>
+	<h1><a href="/"><span class="highlight_red">Hacked</span> News</a></h1>
 
         <ul>
                 <li><a href="/">News Feed</a></li>
-                <li><a href="/likes"><span id="current_page">Likes / Dislikes</span></a></li>
 		{% if session %}
+				<li><a href="/likes"><span id="current_page">Likes / Dislikes</span></a></li>
 		        <li><a href="/account">My Account</a></li>
 			<li><a href="/logout">Log Out</a></li>
 		{% else %}
@@ -29,6 +29,9 @@
 
 <div id="main_content">
 <div id="account_content">
+	{% if is_admin %}
+	<h2>Admin View</h2>
+	{% endif %}
 	<table>
 		<tr>
 			<th>User Id</th>
@@ -39,16 +42,24 @@
 			<th>Rating</th>
 			<th>Remove</th>
 		</tr>
-
+		
 		{% for article in data %}
 			<tr>
-				<td>{{ article[0] }}</td>
+				<td class="td_max_width">{{ article[0] }}</td>
 				<td>{{ article[1] }}</td>
 				<td>{{ article[2] }}</td>
 				<td>{{ article[3] }}</td>
 				<td><a href={{ article[4] }} target="blank">View Article</a></td>
-				<td>{{ article[5] }}</td>
-				<td>Remove</td>
+				<td>
+					{% if article[5] == 1 %}
+						<img src={{ url_for('static', filename='thumbs_up.png') }} />
+					{% else %}
+						<img src={{ url_for('static', filename='thumbs_down.png') }} />
+					{% endif %}
+				</td>
+				<form method="POST" action="/remove_article">
+				<td><input value="Remove" name={{article[1]}} type="submit"></td>
+				</form>
 			</tr>
 		{% endfor %}
 	</table>

@@ -147,6 +147,7 @@ body {
 
 #main_content th {
 	text-decoration: underline;
+	padding-bottom: 10px;
 }
 
 #main_content tr {
@@ -155,6 +156,16 @@ body {
 
 #main_content td {
 	padding-bottom: 10px;
+}
+
+.td_max_width {
+	overflow-wrap: break-word;
+}
+
+#account_content h2 {
+	text-align: center;
+	font-size: 18px;
+	padding-bottom: 14px;
 }
 
 #account_content tr {
@@ -186,6 +197,18 @@ body {
 #profile_image img {
 	width: 70px;
 	height: 70px;
-	border-radius: 100%:
+	border-radius: 100%;
 	padding: 0;
+}
+
+#main_content p {
+	padding-top: 10px;
+}
+
+#main_content form {
+	display: inline-block;
+}
+
+.highlight_red {
+	color: #FF3636;
 }
