@@ -1,10 +1,12 @@
 # Readme File
-### COP 4521 - Python 
-### Group Number: 23
-### Josh Lowe (jrl19@fsu.edu) and Trevor Fagan (taf20@fsu.edu)
+__COP 4521 - Secure, Parallel, and Distributed Computing in Python__ 
+
+__Group Number__: 23
+
+__Josh Lowe__ (_jrl19@fsu.edu_) & __Trevor Fagan__ (_taf20@fsu.edu_)
 
 ## Note
-Our pylint score was not a 10. The reason behind this is that we implemented security headers into our project to make our system more secure. These headers needed to be shortened to increase our pylint score. We had to make a choice and chose better security over a higher pylint score.
+Our pylint score was not a 10. The reason behind this is that we implemented security headers into our project to make our system more secure. These headers needed to be shortened to increase our pylint score. We had to make a choice and chose better security over a higher pylint score. We could have tried to implement the security headers in our nginx configuration file, but we ran out of time.
 
 ## Description of this Repository
 Hacked News is a website for accessing the latest news powered by the Hacker News API. User authentication is powered by Auth0 and user information, articles, and likes are stored in a SQLite3 database. This website was built from the ground up- SSL certification, security, database setup, automated updating, recurring database updates with cron, and more all built around Flask.
@@ -16,16 +18,16 @@ Hacked News is a website for accessing the latest news powered by the Hacker New
 adduser <newuser>
 sudo usermod -aG sudo <newuser>
 4. As root user, redirect to the path ~/../home/<newuser>. Make a new directory called hackedNews.
-4. Install nginx: sudo apt install nginx
-5. Create a virtual environment.
-6. In the virtual environment, install flask: pip install flask
-7. Install gunicorn: pip install gunicorn
-8. Clone the repository into the hackedNews directory mentioned in step 4
-9. Update the nginx conf files and the wsgi.py file (gunicorn worker) with your domain name
-10. Use an A record on your domain name to point to your digitalocean VM IP address
+5. Install nginx: sudo apt install nginx
+6. Create a virtual environment.
+7. In the virtual environment, install flask: pip install flask
+8. Install gunicorn: pip install gunicorn
+9. Clone the repository into the hackedNews directory mentioned in step 4
+10. Update the nginx conf files and the wsgi.py file (gunicorn worker) with your domain name
+11. Use an A record on your domain name to point to your digitalocean VM IP address
 
 
-### Configuration Files (11/03/2022)
+## Configuration Files (11/03/2022)
 All configuration files are found in config.
 hackedNews is our nginx server block including our ssl certificate.
 hackedNews.service is our gunicorn worker process.
@@ -36,7 +38,7 @@ sshd_conf is our ssh configuration.
 We configured unattended updates and upgrades to automatically happen and the configuration file for updates and upgrades is ../../etc/apt/apt.conf.d/50unattended-upgrades from the python user login point or from /etc/apt/apt.conf.d/50unattended-upgrades in the project home directory.
 
 ## Homework 1
-## How to "curl hacked-news.com"
+## What happens with the command "_curl hacked-news.com_"
 ![Curl img](https://i.ibb.co/xzmDPVt/Screen-Shot-2022-10-16-at-3-14-42-PM.png)
 Initially, curl will require an IP address. In this instance, we provided our domain name, "hacked-news.com". From here, the
 domain name will need to be translated into the actual IP address of the server. Initially, curl will use the port 443. This bring us to DNS.
