@@ -54,6 +54,6 @@ When this request reaches the Ubuntu server where we have Nginx installed, Nginx
 ### Flask -> App -> Endpoint py file
 Flask will then provide the response to the curl request. It will find the entry point, which in our case is hackedNews.py. It will then server the contents of this file in response to the request corresponding to the proper route. 
 ![Site image](https://i.ibb.co/HX7hMQ5/Screen-Shot-2022-10-19-at-10-35-52-AM.png)
-### Security
-The initial layer of security we have used to secure our application is by protecting our user accounts that can access the server. Both of our users have access to the server strictly through our SSH key authentication. Additionally, we have a firewall enabled to striclty allow the use of port 22 for SSH connections and port 443 for HTTPS connections. Also, we have configured our Nginx file to redirect and only allow HTTPS connections. 
+### Security (updated)
+The initial layer of security we have used to secure our application is by protecting our user accounts that can access the server. Both of our users have access to the server strictly through our SSH key authentication. Additionally, we have a firewall enabled to striclty allow the use of port 22 for SSH connections and port 443 for HTTPS connections. Also, we have configured nginx to redirect and only allow HTTPS connections. We have implemented multiple security features into our project thanks to reccomendations from Mozilla Observatory. We implemented a content security policy, cookie prevention, disallowed cross-origin resource sharing, redirect all traffic from HTTP to HTTPS, among other tests. Our score on Mozilla Observatory is a 110/100.
 
