@@ -6,6 +6,22 @@
 ## Description of this Repository
 Hacked News is a website for accessing the latest news powered by the Hacker News API. User authentication is powered by Auth0 and user information, articles, and likes are stored in a SQLite3 database. This website was built from the ground up- SSL certification, security, database setup, automated updating, recurring database updates with cron, and more all built around Flask.
 
+## How to clone this repository into a server and host it with Nginx, Gunicorn, Auth0 and Flask
+1. Create a DigitalOcean Droplet with Ubuntu 20.04 LTS. Add your ssh key (~/.ssh/id_rsa.pub) to allowed keys.
+2. On a command line interface, enter the following command to access the server: ssh root@<server_ip_address>
+3. Once in the server, create a new user using the following commands:
+adduser <newuser>
+sudo usermod -aG sudo <newuser>
+4. As root user, redirect to the path ~/../home/<newuser>. Make a new directory called hackedNews.
+4. Install nginx: sudo apt install nginx
+5. Create a virtual environment.
+6. In the virtual environment, install flask: pip install flask
+7. Install gunicorn: pip install gunicorn
+8. Clone the repository into the hackedNews directory mentioned in step 4
+9. Update the nginx conf files and the wsgi.py file (gunicorn worker) with your domain name
+10. Use an A record on your domain name to point to your digitalocean VM IP address
+
+
 ### Configuration Files (11/03/2022)
 All configuration files are found in config.
 hackedNews is our nginx server block including our ssl certificate.
