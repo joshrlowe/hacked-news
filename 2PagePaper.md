@@ -5,9 +5,9 @@ Gitlab Link: https://gitlab.com/trevorfagan77/python-project
 Website: https://www.hacked-news.com/
 Zoom meeting sheet: https://docs.google.com/spreadsheets/d/1KNlvhTw1TmAgTb6RmmtveCS-q62Dzip6fsDflExQIpM/edit?usp=sharing
 PyLint Score:
-![Pylint Score](https://ibb.co/3sG8PjL)
+![Pylint Score](https://iili.io/HHFuj2V.png)
 Unit Test Coverage:
-![Unit Test Coverage](https://ibb.co/523WZWm)
+![Unit Test Coverage](https://iili.io/HHFur4R.png)
 Tutorial Video Link: https://youtu.be/gjzH2Qnvuacs
 
 Project Description: Tools that We Used in this Project
