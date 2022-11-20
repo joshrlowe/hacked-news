@@ -14,17 +14,16 @@ Hacked News is a website for accessing the latest news powered by the Hacker New
 ## How to clone this repository into a server and host it with Nginx, Gunicorn, Auth0 and Flask
 1. Create a DigitalOcean Droplet with Ubuntu 20.04 LTS. Add your ssh key (~/.ssh/id_rsa.pub) to allowed keys.
 2. On a command line interface, enter the following command to access the server: ssh root@<server_ip_address>
-3. Once in the server, create a new user using the following commands:
-adduser <newuser>
-sudo usermod -aG sudo <newuser>
-4. As root user, redirect to the path ~/../home/<newuser>. Make a new directory called hackedNews.
+3. Once in the server, create a new user (__adduser newuser__), and give the new user superuser privileges (__sudo usermod -aG sudo newuser__). This will create a home directory for the new user, where we can store this repository.
+4. As root user, redirect to the path ~/../home/newuser. Make a new directory called hackedNews.
 5. Install nginx: sudo apt install nginx
-6. Create a virtual environment.
+6. Create a virtual environment to install flask and gunicorn.
 7. In the virtual environment, install flask: pip install flask
 8. Install gunicorn: pip install gunicorn
 9. Clone the repository into the hackedNews directory mentioned in step 4
 10. Update the nginx conf files and the wsgi.py file (gunicorn worker) with your domain name
-11. Use an A record on your domain name to point to your digitalocean VM IP address
+11. Use an A record on your domain name to point to your digitalocean VM IP address if you are hosting on the web
+12. Restart nginx (__sudo systemctl restart nginx__). Then restart gunicorn (__systemctl restart hackedNews.service__) to restart those components of your system that you edited.
 
 
 ## Configuration Files (11/03/2022)
