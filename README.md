@@ -3,6 +3,9 @@
 ### Group Number: 23
 ### Josh Lowe (jrl19@fsu.edu) and Trevor Fagan (taf20@fsu.edu)
 
+## Note
+Our pylint score was not a 10. The reason behind this is that we implemented security headers into our project to make our system more secure. These headers needed to be shortened to increase our pylint score. We had to make a choice and chose better security over a higher pylint score.
+
 ## Description of this Repository
 Hacked News is a website for accessing the latest news powered by the Hacker News API. User authentication is powered by Auth0 and user information, articles, and likes are stored in a SQLite3 database. This website was built from the ground up- SSL certification, security, database setup, automated updating, recurring database updates with cron, and more all built around Flask.
 
