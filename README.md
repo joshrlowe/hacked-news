@@ -3,6 +3,9 @@
 ### Group Number: 23
 ### Josh Lowe (jrl19@fsu.edu) and Trevor Fagan (taf20@fsu.edu)
 
+## Description of this Repository
+Hacked News is a website for accessing the latest news powered by the Hacker News API. User authentication is powered by Auth0 and user information, articles, and likes are stored in a SQLite3 database. This website was built from the ground up- SSL certification, security, database setup, automated updating, recurring database updates with cron, and more all built around Flask.
+
 ### Configuration Files (11/03/2022)
 All configuration files are found in config.
 hackedNews is our nginx server block including our ssl certificate.
@@ -13,6 +16,7 @@ sshd_conf is our ssh configuration.
 ### Updates & Upgrades
 We configured unattended updates and upgrades to automatically happen and the configuration file for updates and upgrades is ../../etc/apt/apt.conf.d/50unattended-upgrades from the python user login point or from /etc/apt/apt.conf.d/50unattended-upgrades in the project home directory.
 
+## Homework 1
 ## How to "curl hacked-news.com"
 ![Curl img](https://i.ibb.co/xzmDPVt/Screen-Shot-2022-10-16-at-3-14-42-PM.png)
 Initially, curl will require an IP address. In this instance, we provided our domain name, "hacked-news.com". From here, the
